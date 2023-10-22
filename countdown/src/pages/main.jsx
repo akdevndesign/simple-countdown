@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 
 export default function Main() {
   const [time, setTime] = useState(0);
@@ -52,19 +55,38 @@ const formatTime = (seconds) => {
     const handleAddMinute = () => {
         setTime(prevTime => prevTime + 60);
     };
+//click handler for add 10 seconds button
+    const handleAddTenSeconds = () => {
+        setTime(prevTime => prevTime + 10);
+    };
+//click handler for add 1 second button
+    const handleAddOneSecond = () => {
+        setTime(prevTime => prevTime + 1);
+    };
 
   return (
-    <div>
-      <h1>{formatTime(time)}</h1>
-      <Stack spacing={2} direction="row">
-        <Button variant="contained" onClick={handleStartPause}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <Box>
+      <Typography variant="h2" gutterBottom>
+        Countdown Timer
+      </Typography>
+      <Typography variant="h1" gutterBottom>
+      {formatTime(time)}
+    </Typography>
+      <Stack direction="row" spacing={2} justifyContent="center">
+        <Button variant="contained" onClick={handleAddMinute}>+ Minute</Button>
+        <Button variant="contained" onClick={handleAddTenSeconds}>+ 10 Sec</Button>
+        <Button variant="contained" onClick={handleAddOneSecond}>+ 1 Sec</Button>
+      </Stack>
+    <br />
+      <Stack spacing={2}>
+        <Button variant="contained" onClick={handleStartPause} color="success">
         {isRunning ? "Pause" : "Start"} 
         </Button>
-        <Button variant="contained" onClick={handleResetTimer}>Reset
+        <Button variant="contained" onClick={handleResetTimer} color="error">Reset
         </Button>
-        <Button variant="contained" onClick={handleAddMinute}>+ Minute</Button>
-      </Stack>
-
+        </Stack>
+        </Box>
     </div>
   );
 }
