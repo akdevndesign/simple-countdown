@@ -20,6 +20,7 @@ export default function Main() {
       intervalRef.current = setInterval(() => {
         setTime((prevTime) => {
           if (prevTime > 0.1) {
+            setButtonsDisabled(true);
             return prevTime - 0.1;
           } else {
             clearInterval(intervalRef.current);
@@ -39,6 +40,7 @@ export default function Main() {
       if (!timerMessage) {
         setTimerMessage("");
         setTimerColor("inherit");
+        setButtonsDisabled(false);
         setStartButtonDisabled(false);
       }
     }
