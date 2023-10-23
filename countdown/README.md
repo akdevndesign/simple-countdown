@@ -4,7 +4,7 @@
 - [Install](#install)
 - [Use](#use)
 - [Visual](#visual)
-- [Contributing](#contributing)
+- [Dependencies](#dependencies)
 - [License](#license)
 - [Questions](#questions)
 
@@ -15,8 +15,9 @@ Navigate to src directory in terminal. Install packages using "NPM I" command. O
 ## Use
 For educational purposes only.
 ## Visual
-![Visual]()
-## Contributing
+<img width="918" alt="Screenshot 2023-10-23 at 10 08 02 AM" src="https://github.com/akdevndesign/simple-countdown/assets/115499632/aa588398-8e70-47d2-b9e9-34bb869d8778">
+
+## Dependencies
 MUI, React, React-dom, React-scripts, Emotion/react, Emotion/Styled
 ## License
 Visit https://opensource.org/licenses/MIT for more information.
