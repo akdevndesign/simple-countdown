@@ -19,8 +19,8 @@ export default function Main() {
     if (isRunning) {
       intervalRef.current = setInterval(() => {
         setTime((prevTime) => {
-          if (prevTime > 0) {
-            return prevTime - 1;
+          if (prevTime > 0.1) {
+            return prevTime - 0.1;
           } else {
             clearInterval(intervalRef.current);
             setIsRunning(false);
@@ -33,7 +33,7 @@ export default function Main() {
             return 0;
           }
         });
-      }, 1000);
+      }, 100);
     } else {
       clearInterval(intervalRef.current);
       if (!timerMessage) {
@@ -47,13 +47,13 @@ export default function Main() {
 
   //function to format time to minutes and seconds 00:00
   const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-    const formattedSeconds =
-      remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
-    return `${formattedMinutes}:${formattedSeconds}`;
-  };
+  const roundedSeconds = Math.floor(seconds);
+  const minutes = Math.floor(roundedSeconds / 60);
+  const remainingSeconds = roundedSeconds % 60;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+  return `${formattedMinutes}:${formattedSeconds}`;
+};
 
   const handleStartPause = () => {
     setIsRunning((prevIsRunning) => !prevIsRunning);
